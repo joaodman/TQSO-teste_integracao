@@ -56,7 +56,12 @@ public class DiningRoom {
 	}
 	
 	public boolean pickAClientFromWaitingRoom() {
-		return true;
+		if(m_waiting_room.get_clients().size() > 0){
+			m_clients_in_progress.add(m_waiting_room.get_clients().getFirst());
+			m_waiting_room.get_clients().remove(0);
+			return true;
+		}
+		return false;
 	}
 	
 	public boolean endAClientServiceInWaintingRoom(Client clientToEndService) {
